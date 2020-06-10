@@ -3,7 +3,7 @@
 <suite name="Regression Suite">
 
 	<listeners>
-		<listener class-name="com.hrms.testbase.ListenerDemo"></listener>
+		<listener class-name="com.hrms.testbase.Listener"></listener>
 	</listeners>
 
 

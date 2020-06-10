@@ -38,6 +38,10 @@ public class DashboardPageElements extends CommonMethods {
 	@FindBy (id= "menu_recruitment_viewCandidates")
 	public WebElement candidates;
 	
+	@FindBy (id="menu_core_viewDefinedPredefinedReports")
+	public WebElement reports;
+	
+	
 
 	public DashboardPageElements() {
 		PageFactory.initElements(BaseClass.driver, this);
@@ -65,7 +69,11 @@ public class DashboardPageElements extends CommonMethods {
 		click(addEmployee);
 	}
 
-	
+	public void hoverOverReports() {
+		Actions action= new Actions(driver);
+		action.moveToElement(pim).perform();
+		click(reports);
+	}
 	
 	
 	

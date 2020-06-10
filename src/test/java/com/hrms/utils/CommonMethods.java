@@ -1,6 +1,8 @@
 package com.hrms.utils;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -248,17 +250,31 @@ public class CommonMethods extends PageInitializer {
 	 * This method will take a screenshot
 	 */
 
-	public static void takeScreenshot(String filename) {
+	public static String takeScreenshot(String filename) {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File file = ts.getScreenshotAs(OutputType.FILE);
-
+		String destinationFile=Constants.SCREENSHOT_FILEPATH+filename+getTimeStemp()+".png";
+		
 		try {
-			FileUtils.copyFile(file, new File("screenshot/"+filename+".png"));
+			FileUtils.copyFile(file, new File(destinationFile));
 		} catch (Exception ex) {
 			System.out.println("Cannot take screenshot");
 		}
+		return destinationFile;
 	}
 
+	public static String getTimeStemp() {
+		Date date = new Date();
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
+		return sdf.format(date.getTime());
+		
+	}
+	
+	
+	
+	
+	
+	
 	/**
 	 * Method that will scroll the page down based on the passed pixel parameters
 	 * 
